@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 
 export const FETCH_MOVIE_START = "FETCH_MOVIE_START";

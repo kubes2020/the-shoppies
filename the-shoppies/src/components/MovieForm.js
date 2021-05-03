@@ -2,9 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
 import { fetchMovies } from "../actions";
+import MovieCard from "./MovieCard";
+import { Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function MovieForm(props) {
-  const [movieSearch, setMovieSearch] = useState();
+  const [movieSearch, setMovieSearch] = useState("");
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const onChange = (e) => {
@@ -34,13 +37,14 @@ function MovieForm(props) {
         </label>
         <button disabled={buttonDisabled}>Submit</button>
       </form>
+      <MovieCard></MovieCard>
     </div>
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    moviesSaved: state.movies,
-  };
-};
-export default connect(mapStateToProps, { fetchMovies })(MovieForm);
+// const mapStateToProps = (state) => {
+//   return {
+//     moviesSaved: state.movies,
+//   };
+// };
+export default connect("", { fetchMovies })(MovieForm);

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   FETCH_MOVIE_START,
   FETCH_MOVIE_SUCCESS,
