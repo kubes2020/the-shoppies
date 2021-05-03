@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import axios from "axios";
 
 export default function MovieForm() {
   const [movieSearch, setMovieSearch] = useState();
@@ -12,6 +13,14 @@ export default function MovieForm() {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    axios
+      .get(`http://www.omdbapi.com/?s=${movieSearch}&apikey=5074568e`)
+      .then((res) => {
+        console.log("this is res.data.Search", res.data.Search);
+      })
+      .catch((err) => {
+        console.log("error from res.data.Search", err);
+      });
   };
   return (
     <div>
