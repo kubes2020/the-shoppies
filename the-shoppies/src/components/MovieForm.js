@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import axios from "axios";
+import { connect } from "react-redux";
+import { fetchMovies } from "../actions";
 
-export default function MovieForm() {
+function MovieForm(props) {
   const [movieSearch, setMovieSearch] = useState();
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
@@ -13,15 +14,11 @@ export default function MovieForm() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    axios
-      .get(`http://www.omdbapi.com/?s=${movieSearch}&apikey=5074568e`)
-      .then((res) => {
-        console.log("this is res.data.Search", res.data.Search);
-      })
-      .catch((err) => {
-        console.log("error from res.data.Search", err);
-      });
+    props.fetchMovies(
+      `http://www.omdbapi.com/?s=${movieSearch}&apikey=5074568e`
+    );
   };
+
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -40,3 +37,10 @@ export default function MovieForm() {
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    moviesSaved: state.movies,
+  };
+};
+export default connect(mapStateToProps, { fetchMovies })(MovieForm);
