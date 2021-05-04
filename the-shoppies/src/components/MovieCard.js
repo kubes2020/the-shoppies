@@ -1,13 +1,23 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Button, Card } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "../styles/MovieCard.css";
 
 function MovieCard(props) {
   return (
-    <div>
+    <div className="stack-center">
       {props.moviesSaved.map((mov, index) => {
-        return <h3 key={index}>{mov.Title}</h3>;
+        return (
+          <div className="movie-card" key={index}>
+            <div className="movie-image">
+              <img src={mov.Poster} alt="movie pic"></img>
+            </div>
+            <div className="movie-text">
+              <div>{mov.Title}</div>
+              <div>{mov.Year}</div>
+              <button className="nominate-button">Nominate</button>
+            </div>
+          </div>
+        );
       })}
     </div>
   );
@@ -19,21 +29,3 @@ const mapStateToProps = (state) => {
   };
 };
 export default connect(mapStateToProps, {})(MovieCard);
-
-// function MovieCard(props) {
-//     return (
-//       <div>
-//         {props.moviesSaved.map((mov, index) => {
-//           return (
-//             <Card key={index}>
-//               <Card.Body>
-//                 <Card.Title>{mov.Title}</Card.Title>
-//                 <Card.Text>description here</Card.Text>
-//                 <Button>Nominate</Button>
-//               </Card.Body>
-//             </Card>
-//           );
-//         })}
-//       </div>
-//     );
-//   }

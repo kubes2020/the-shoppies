@@ -3,8 +3,6 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { fetchMovies } from "../actions";
 import MovieCard from "./MovieCard";
-import { Button } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function MovieForm(props) {
   const [movieSearch, setMovieSearch] = useState("");
