@@ -1,0 +1,14 @@
+.main-container {
+    display: flex;
+    border: 2px solid black;
+}
+
+.movie-container {
+    width: 70%;
+    border: 2px solid orange;
+}
+
+.nominations-container {
+    width: 30%;
+    border: 2px solid yellow;
+}

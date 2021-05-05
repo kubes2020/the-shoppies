@@ -3,6 +3,8 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { fetchMovies } from "../actions";
 import MovieCard from "./MovieCard";
+import Nominations from "./Nominations.js";
+import "../styles/MovieForm.css";
 
 function MovieForm(props) {
   const [movieSearch, setMovieSearch] = useState("");
@@ -35,7 +37,14 @@ function MovieForm(props) {
         </label>
         <button disabled={buttonDisabled}>Submit</button>
       </form>
-      <MovieCard></MovieCard>
+      <div className="main-container">
+        <div className="movie-container">
+          <MovieCard></MovieCard>
+        </div>
+        <div className="nominations-container">
+          <Nominations></Nominations>
+        </div>
+      </div>
     </div>
   );
 }
