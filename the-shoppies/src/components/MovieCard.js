@@ -5,32 +5,45 @@ import { saveNomination } from "../actions/index.js";
 
 function MovieCard(props) {
   const handleClick = (title, year) => {
-    props.saveNomination({ title: title, year: year });
+    if (props.nominatedMovies.length < 5) {
+      props.saveNomination({ title: title, year: year });
+    } else {
+      alert("So sorry, there is a maximum of 5 nominations");
+    }
   };
 
   const renderCard = () => {
-    return props.moviesSaved.map((mov, index) => {
+    if (props.moviesSaved) {
+      return props.moviesSaved.map((mov, index) => {
+        return (
+          <div className="movie-card" key={index}>
+            <div className="movie-image">
+              <img src={mov.Poster} alt="movie pic"></img>
+            </div>
+            <div className="movie-text">
+              <div>{mov.Title}</div>
+              <div>{mov.Year}</div>
+              {props.nominatedMovies.filter(({ title }) => mov.Title === title)
+                .length === 1 ? null : (
+                <button
+                  className="nominate-button"
+                  onClick={() => handleClick(mov.Title, mov.Year)}
+                >
+                  Nominate
+                </button>
+              )}
+            </div>
+          </div>
+        );
+      });
+    } else {
       return (
-        <div className="movie-card" key={index}>
-          <div className="movie-image">
-            <img src={mov.Poster} alt="movie pic"></img>
-          </div>
-          <div className="movie-text">
-            <div>{mov.Title}</div>
-            <div>{mov.Year}</div>
-            {props.nominatedMovies.filter(({ title }) => mov.Title === title)
-              .length === 1 ? null : (
-              <button
-                className="nominate-button"
-                onClick={() => handleClick(mov.Title, mov.Year)}
-              >
-                Nominate
-              </button>
-            )}
-          </div>
-        </div>
+        <>
+          <h3>Well this is embarrassing...</h3>
+          <h3>We couldn't find any movies for that search</h3>
+        </>
       );
-    });
+    }
   };
 
   return (
