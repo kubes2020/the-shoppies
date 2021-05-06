@@ -9,6 +9,7 @@ import {
 const initialState = {
   movies: [],
   nominations: [],
+  nomTitles: [],
   isLoading: false,
   error: "",
 };
@@ -37,6 +38,7 @@ export const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         nominations: [...state.nominations, action.payload],
+        nomTitles: [...state.nomTitles, action.payload.title],
       };
     case DELETE_NOMINATION:
       return {
@@ -45,6 +47,9 @@ export const movieReducer = (state = initialState, action) => {
           ...state.nominations.filter(
             (nomination) => nomination.title !== action.payload
           ),
+        ],
+        nomTitles: [
+          ...state.nomTitles.filter((nomT) => nomT !== action.payload),
         ],
       };
     default:

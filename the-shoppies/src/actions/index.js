@@ -11,7 +11,14 @@ export const fetchMovies = (url) => (dispatch) => {
   axios
     .get(url)
     .then((res) => {
-      console.log("res.data.Search from actions", res.data.Search);
+      // add key/value isNominated: false, to object as they come in
+      res.data.Search.forEach((i) => {
+        i.isNominated = false;
+      });
+      console.log(
+        "res.data.Search with isNominated from actions",
+        res.data.Search
+      );
       dispatch({ type: FETCH_MOVIE_SUCCESS, payload: res.data.Search });
     })
     .catch((err) => {
