@@ -4,7 +4,6 @@ import { deleteNomination } from "../actions/index.js";
 
 function Nominations(props) {
   const handleRemove = (title) => {
-    console.log("remove title:", title);
     props.deleteNomination(title);
   };
 

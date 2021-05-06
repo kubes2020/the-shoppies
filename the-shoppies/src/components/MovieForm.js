@@ -8,7 +8,6 @@ import "../styles/MovieForm.css";
 
 function MovieForm(props) {
   const [movieSearch, setMovieSearch] = useState("");
-  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const onChange = (e) => {
     e.preventDefault();
@@ -35,7 +34,7 @@ function MovieForm(props) {
             onChange={onChange}
           ></input>
         </label>
-        <button disabled={buttonDisabled}>Submit</button>
+        <button>Submit</button>
       </form>
       <div className="main-container">
         <div className="movie-container">
@@ -49,9 +48,4 @@ function MovieForm(props) {
   );
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     moviesSaved: state.movies,
-//   };
-// };
 export default connect("", { fetchMovies })(MovieForm);
