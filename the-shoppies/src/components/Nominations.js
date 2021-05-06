@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { deleteNomination } from "../actions/index.js";
+import "../styles/Nominations.css";
 
 function Nominations(props) {
   const handleRemove = (title) => {
@@ -8,19 +9,24 @@ function Nominations(props) {
   };
 
   return (
-    <div>
-      <h2>Nominations</h2>
-      {props.nominations.map((item, index) => {
-        return (
-          <>
-            <div key={index}>
-              {index + 1}: {item.title}, {item.year}
+    <>
+      <h2 className="sub-title">Nominations</h2>
+      <div className="nom-box">
+        {props.nominations.map((item, index) => {
+          return (
+            <div className="nom-card">
+              <div key={index}>
+                {index + 1}: {item.title}, {item.year}
+              </div>
+              <button onClick={() => handleRemove(item.title)}>Remove</button>
             </div>
-            <button onClick={() => handleRemove(item.title)}>Remove</button>
-          </>
-        );
-      })}
-    </div>
+          );
+        })}
+        {props.nominations.length === 5 ? (
+          <h3>Hooray!!! You've done it</h3>
+        ) : null}
+      </div>
+    </>
   );
 }
 

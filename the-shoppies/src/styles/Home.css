@@ -1,0 +1,36 @@
+.home-container {
+    min-height: 100vh;
+    background-color: #d4971e;
+    background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.home-container h1 {
+    font-size: 3rem;
+}
+
+.home-container a {
+    padding: 2%;
+    color: rgb(245, 241, 234);
+    transition: .3s;
+}
+.home-container a:hover {
+    color: white;
+    text-decoration-color:rgb(75, 72, 69)
+}
+
+
+
+.hero-image {
+    max-height: 70vh;
+    width: 90%;
+    border-radius: 1px;
+    overflow: hidden;
+    border: 4px solid rgb(75, 72, 69);
+}
+
+.hero-image img {
+    height: auto;
+    width: 100%;
+}

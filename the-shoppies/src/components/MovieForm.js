@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { fetchMovies } from "../actions";
 import MovieCard from "./MovieCard";
 import Nominations from "./Nominations.js";
+import Loader from "react-loader-spinner";
 import "../styles/MovieForm.css";
 
 function MovieForm(props) {
@@ -23,9 +24,21 @@ function MovieForm(props) {
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="movie">
-          Movie Title
+      <div className="upper-form-container">
+        <h2>Find Movies</h2>
+        <div className="spinner">
+          {props.isLoading ? (
+            <Loader
+              type="Puff"
+              color="rgb(75, 72, 69)"
+              height={29}
+              width={29}
+              timeout={3000}
+            ></Loader>
+          ) : null}
+        </div>
+        <form onSubmit={onSubmit} className="form-container">
+          <label htmlFor="movie">Movie Title</label>
           <input
             name="movie"
             type="text"
@@ -33,9 +46,10 @@ function MovieForm(props) {
             value={movieSearch}
             onChange={onChange}
           ></input>
-        </label>
-        <button>Submit</button>
-      </form>
+
+          <button>Submit</button>
+        </form>
+      </div>
       <div className="main-container">
         <div className="movie-container">
           <MovieCard></MovieCard>
@@ -48,4 +62,10 @@ function MovieForm(props) {
   );
 }
 
-export default connect("", { fetchMovies })(MovieForm);
+const mapStateToProps = (state) => {
+  return {
+    isLoading: state.isLoading,
+  };
+};
+
+export default connect(mapStateToProps, { fetchMovies })(MovieForm);
