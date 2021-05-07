@@ -1,5 +1,5 @@
 # Description
-    This app titled, The Shoppies, interacts with the OMDb api <http://www.omdbapi.com/>. You can search the api for movie titles and nominate up to 5 movies for awards.
+    This app titled, The Shoppies, interacts with the OMDb api <http://www.omdbapi.com/>. You can search the api for movie titles and nominate up to 5 movies for awards. The frontend is deployed on Vercel at <https://the-shoppies-two.vercel.app/>
 
 # Developed by:
     Brian Kubes
