@@ -4,10 +4,12 @@ import { deleteNomination } from "../actions/index.js";
 import "../styles/Nominations.css";
 
 function Nominations(props) {
+  // Delete nomination object from nominations array, based on title
   const handleRemove = (title) => {
     props.deleteNomination(title);
   };
 
+  // Map through nominations, when length === 5 display "Hooray"
   return (
     <>
       <h2 className="sub-title">Nominations</h2>

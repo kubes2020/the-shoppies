@@ -1,3 +1,9 @@
+# Description
+    This app titled, The Shoppies, interacts with the OMDb api <http://www.omdbapi.com/>. You can search the api for movie titles and nominate up to 5 movies for awards.
+
+# Developed by:
+    Brian Kubes
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

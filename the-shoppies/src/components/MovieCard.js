@@ -4,6 +4,7 @@ import "../styles/MovieCard.css";
 import { saveNomination } from "../actions/index.js";
 
 function MovieCard(props) {
+  /* Allow maximum of 5 movie nominations */
   const handleClick = (title, year) => {
     if (props.nominatedMovies.length < 5) {
       props.saveNomination({ title: title, year: year });
@@ -12,6 +13,7 @@ function MovieCard(props) {
     }
   };
 
+  /* If moviesSaved has objects, map through them to display */
   const renderCard = () => {
     if (props.moviesSaved) {
       return props.moviesSaved.map((mov, index) => {
@@ -23,6 +25,7 @@ function MovieCard(props) {
             <div className="movie-text">
               <div>{mov.Title}</div>
               <div>{mov.Year}</div>
+              {/* Do not display the "nominate button" if title is already in nominatedMovies */}
               {props.nominatedMovies.filter(({ title }) => mov.Title === title)
                 .length === 1 ? null : (
                 <button

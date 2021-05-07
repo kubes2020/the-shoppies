@@ -15,6 +15,7 @@ function MovieForm(props) {
     setMovieSearch(e.target.value);
   };
 
+  // Submit user search to OMDb api
   const onSubmit = (e) => {
     e.preventDefault();
     props.fetchMovies(
@@ -46,16 +47,15 @@ function MovieForm(props) {
             value={movieSearch}
             onChange={onChange}
           ></input>
-
           <button>Submit</button>
         </form>
       </div>
       <div className="main-container">
-        <div className="movie-container">
-          <MovieCard></MovieCard>
-        </div>
         <div className="nominations-container">
           <Nominations></Nominations>
+        </div>
+        <div className="movie-container">
+          <MovieCard></MovieCard>
         </div>
       </div>
     </div>
@@ -67,5 +67,4 @@ const mapStateToProps = (state) => {
     isLoading: state.isLoading,
   };
 };
-
 export default connect(mapStateToProps, { fetchMovies })(MovieForm);
