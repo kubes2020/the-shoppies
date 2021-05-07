@@ -19,7 +19,7 @@ function MovieForm(props) {
   const onSubmit = (e) => {
     e.preventDefault();
     props.fetchMovies(
-      `http://www.omdbapi.com/?s=${movieSearch}&apikey=5074568e`
+      `https://www.omdbapi.com/?s=${movieSearch}&apikey=5074568e`
     );
   };
 
